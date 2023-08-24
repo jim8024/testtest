@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from 'react';
+// AppendCard.jsx
+import React from 'react';
 import CardContent from '@mui/material/CardContent';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Button, Card } from '@mui/material';
-import AddBoxRoundedIcon from '@mui/icons-material/AddBoxRounded';
+import { Card } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 
 function textOverCut(txt, len, lastTxt) {
     if (len === '' || len == null) {
-        // 기본값
         len = 12;
     }
     if (lastTxt === '' || lastTxt == null) {
-        // 기본값
         lastTxt = '...';
     }
     if (txt.length > len) {
@@ -23,30 +21,9 @@ function textOverCut(txt, len, lastTxt) {
 }
 
 export default function AppendCard({ selectedItems }) {
-    const [visibleItems, setVisibleItems] = useState([]);
-    const [loadMore, setLoadMore] = useState(false);
-
-    useEffect(() => {
-        if (selectedItems.length > 0) {
-            setVisibleItems(selectedItems.slice(0, 6));
-            setLoadMore(true);
-        }
-    }, [selectedItems]);
-
-    const handleLoadMore = () => {
-        const currentLength = visibleItems.length;
-        const newVisibleItems = selectedItems.slice(0, currentLength + 6);
-        
-        setVisibleItems(newVisibleItems);
-
-        if (newVisibleItems.length === selectedItems.length) {
-            setLoadMore(false);
-        }
-    };
-
     return (
         <>
-            {visibleItems.map((item, index) => (
+            {selectedItems.map((item, index) => (
                 <Card
                     key={index}
                     sx={{
@@ -62,6 +39,7 @@ export default function AppendCard({ selectedItems }) {
                         component="img"
                         sx={{ width: 70, height: 70, flexGrow: '1', borderRadius: '5px', marginLeft: '10px' }}
                         image={item.firstimage}
+                        alt={item.title}
                     />
                     <CardContent sx={{ position: 'static', flexGrow: '5' }}>
                         <Typography
@@ -94,34 +72,8 @@ export default function AppendCard({ selectedItems }) {
                             <StarIcon sx={{ fontSize: 14, color: '#FBC02D' }} />
                         </div>
                     </CardContent>
-                    <div
-                        style={{
-                            flexGrow: '1',
-                            display: 'flex',
-                            flexDirection: 'row-reverse',
-                            justifyContent: 'center',
-                        }}
-                    >
-                        <Button
-                            sx={{
-                                height: '30px',
-                                width: '30px',
-                                padding: '0',
-                                minWidth: '0',
-                                marginRight: '9px',
-                            }}
-                        >
-                            <AddBoxRoundedIcon />
-                        </Button>
-                    </div>
                 </Card>
             ))}
-
-            {loadMore && (
-                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-                    <Button onClick={handleLoadMore}>더 보기</Button>
-                </div>
-            )}
         </>
     );
 }
