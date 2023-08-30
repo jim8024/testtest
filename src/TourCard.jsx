@@ -1,35 +1,38 @@
-import React from 'react';
-import CardContent from '@mui/material/CardContent';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { Card, Button } from '@mui/material';
-import StarIcon from '@mui/icons-material/Star';
-import AddBoxRoundedIcon from '@mui/icons-material/AddBoxRounded';
-import output from './finalresult.json';
+import React from "react";
+import CardContent from "@mui/material/CardContent";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { Card, Button } from "@mui/material";
+import StarIcon from "@mui/icons-material/Star";
+import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
+import output from "./finalresult.json";
 
 function textOverCut(txt, len, lastTxt) {
-    if (len === '' || len == null) {
-        len = 12;
-    }
-    if (lastTxt === '' || lastTxt == null) {
-        lastTxt = '...';
-    }
-    if (txt.length > len) {
-        txt = txt.substr(0, len) + lastTxt;
-    }
-    return txt;
+  if (len === "" || len == null) {
+    len = 12;
+  }
+  if (lastTxt === "" || lastTxt == null) {
+    lastTxt = "...";
+  }
+  if (txt.length > len) {
+    txt = txt.substr(0, len) + lastTxt;
+  }
+  return txt;
 }
 
-export default function TourCard({ selectedItems, setSelectedItems, selectedIndex }) {
+export default function TourCard({
+  selectedItems,
+  setSelectedItems,
+  selectedIndex,
+}) {
   const handleAddButtonClick = (item) => {
     const selectedDate = new Date().toISOString().substr(0, 10);
-    console.log(selectedItems);
     let updatedArray = [...selectedItems];
-    updatedArray[selectedIndex] = {
-      ...item,
-      date: selectedDate,
-    };
+    updatedArray[selectedIndex] = [
+      ...updatedArray[selectedIndex],
+      { ...item, date: selectedDate },
+    ];
     setSelectedItems(updatedArray);
   };
 
@@ -72,7 +75,7 @@ export default function TourCard({ selectedItems, setSelectedItems, selectedInde
                     fontSize: 12.8,
                   }}
                 >
-                  {textOverCut(item.title, 10.8, "...")}
+                  {textOverCut(item.title, 10, "...")}
                 </Typography>
                 <Typography variant="div">
                   <span

@@ -22,7 +22,9 @@ function DatePicker({ selectedItems, setSelectedIndex, setSelectedItems }) {
   const selectedStartDate = state[0].startDate;
   const selectedEndDate = state[0].endDate;
 
-  const nextDayStartDate = selectedStartDate ? new Date(selectedStartDate) : null;
+  const nextDayStartDate = selectedStartDate
+    ? new Date(selectedStartDate)
+    : null;
   if (nextDayStartDate) {
     nextDayStartDate.setDate(nextDayStartDate.getDate() + 1);
   }
@@ -43,13 +45,15 @@ function DatePicker({ selectedItems, setSelectedIndex, setSelectedItems }) {
 
     setSelectedIndex(index);
   };
-
   const dateCards = []; // 이차원 배열을 저장할 배열
   const newArray = Array.apply({}, { length: dateRangeInDays });
   console.log(dateRangeInDays);
+
   useEffect(() => {
-    dateRangeInDays > 0 && setSelectedItems(new Array(dateRangeInDays).fill(""));
+    dateRangeInDays > 0 &&
+      setSelectedItems(new Array(dateRangeInDays).fill([]));
   }, [dateRangeInDays]);
+
   for (let i = 0; i < dateRangeInDays; i++) {
     const cardsForDate = []; // 특정 날짜에 대한 카드를 저장할 배열
 
