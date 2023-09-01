@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Grid } from "@mui/material";
-import "./Test.css";
-import DatePicker from "./plan/DatePicker";
+import "./CreatePlanner.css";
+import DatePicker from "./DatePicker";
 import Map from "./Map";
 import TourCard from "./TourCard";
 

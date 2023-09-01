@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 // import Modal from './plan/Modal';
 // import PersonIcon from '@mui/icons-material/Person';
 // import FavoriteIcon from '@mui/icons-material/Favorite';
 // import BookmarkIcon from '@mui/icons-material/Bookmark';
-import Test from './Test';
+import Test from "./plan/CreatePlanner";
 
 function App() {
-    // const [modalOpen, setModalOpen] = useState(false);
+  // const [modalOpen, setModalOpen] = useState(false);
 
-    // const openModal = () => {
-    //     setModalOpen(true);
-    // };
+  // const openModal = () => {
+  //     setModalOpen(true);
+  // };
 
-    // const closeModal = () => {
-    //     setModalOpen(false);
-    // };
+  // const closeModal = () => {
+  //     setModalOpen(false);
+  // };
 
-    return (
-        <div className="App">
-            {/* <h1>React Modal Example</h1>
+  return (
+    <div className="App">
+      {/* <h1>React Modal Example</h1>
             <button onClick={openModal}>Open Modal</button>
             <Modal isOpen={modalOpen} onClose={closeModal}>
                 <div className="modal-grid">
@@ -40,9 +40,9 @@ function App() {
                     </div>
                 </div>
             </Modal> */}
-            <Test />
-        </div>
-    );
+      <Test />
+    </div>
+  );
 }
 
 export default App;

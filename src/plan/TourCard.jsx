@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import { Card, Button } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
-import output from "./finalresult.json";
+import output from "../finalresult.json";
 
 function textOverCut(txt, len, lastTxt) {
   if (len === "" || len == null) {

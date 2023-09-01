@@ -8,12 +8,12 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import AppendCard from "../AppendCard";
+import AppendCard from "./AppendCard";
 
 function DatePicker({ selectedItems, setSelectedIndex, setSelectedItems }) {
   const [state, setState] = useState([
     {
-      startDate: new Date(),
+      startDate: null,
       endDate: null,
       key: "selection",
     },
@@ -45,7 +45,7 @@ function DatePicker({ selectedItems, setSelectedIndex, setSelectedItems }) {
 
     setSelectedIndex(index);
   };
-  const dateCards = []; // 이차원 배열을 저장할 배열
+  const dateCards = [[]]; // 이차원 배열을 저장할 배열
   const newArray = Array.apply({}, { length: dateRangeInDays });
   console.log(dateRangeInDays);
 
@@ -60,7 +60,7 @@ function DatePicker({ selectedItems, setSelectedIndex, setSelectedItems }) {
     // AppendCard에 넘겨줄 props 설정
     const cardProps = {
       selectedItems: selectedItems[i],
-      day: i + 1, // ?
+      day: i + 1,
     };
 
     cardsForDate.push(<AppendCard key={i} {...cardProps} />); // 해당 날짜의 카드를 추가
@@ -84,7 +84,7 @@ function DatePicker({ selectedItems, setSelectedIndex, setSelectedItems }) {
       <hr />
       <h3>선택한 여행지</h3>
       <hr />
-      {dateCards.map((cardsForDate, index) => (
+      {dateCards.slice(1).map((cardsForDate, index) => (
         <Accordion
           key={index}
           expanded={expanded === `panel${index}`}
